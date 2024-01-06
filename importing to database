@@ -1,0 +1,34 @@
+-- importing to library table
+COPY library
+FROM 'C:/Users/user/latihan/library.csv'
+DELIMITER ','
+CSV
+HEADER;
+
+-- importing to book table
+COPY book
+FROM 'C:/Users/user/latihan/book.csv'
+DELIMITER ','
+CSV
+HEADER;
+
+-- importing to users table
+COPY users
+FROM 'C:/Users/user/latihan/users.csv'
+DELIMITER ','
+CSV
+HEADER;
+
+-- importing to loan table
+COPY loan
+FROM 'C:/Users/user/latihan/loan.csv'
+DELIMITER ','
+CSV
+HEADER;
+
+-- importing to hold table
+COPY hold
+FROM 'C:/Users/user/latihan/hold.csv'
+DELIMITER ','
+CSV
+HEADER;
