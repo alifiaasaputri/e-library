@@ -1,0 +1,57 @@
+import csv
+from faker import Faker
+import random
+import datetime
+
+fake = Faker()
+
+# Function to generate random dates within a given range
+def random_dates(start_date, end_date, n=10):
+    return [start_date + datetime.timedelta(days=random.randint(0, (end_date - start_date).days)) for _ in range(n)]
+
+# Generate 100 dummy data for Library
+libraries = [(i + 1, fake.word(), fake.city()) for i in range(100)]
+
+# Generate 100 dummy data for Book
+books = [(i + 1, fake.sentence(), fake.name(), random.randint(1, 50), fake.word()) for i in range(100)]
+
+# Generate 100 dummy data for User
+users = [(i + 1, fake.name(), fake.email(), fake.password()) for i in range(100)]
+
+# Generate 100 dummy data for Loan
+loan_start_date = datetime.datetime(2023, 1, 1)
+loan_end_date = datetime.datetime(2023, 12, 31)
+loans = [(i + 1, random.randint(1, 100), random.randint(1, 100), random_dates(loan_start_date, loan_end_date)[0],
+          random_dates(loan_start_date, loan_end_date)[1], None) for i in range(100)]
+
+# Generate 100 dummy data for Hold
+hold_start_date = datetime.datetime(2023, 1, 1)
+hold_end_date = datetime.datetime(2023, 12, 31)
+holds = [(i + 1, random.randint(1, 100), random.randint(1, 100), random_dates(hold_start_date, hold_end_date)[0],
+          random_dates(hold_start_date, hold_end_date)[1]) for i in range(100)]
+
+# Write data to CSV files
+with open('library.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['LibraryID', 'Name', 'Location'])
+    writer.writerows(libraries)
+
+with open('book.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['BookID', 'Title', 'Author', 'Quantity', 'Category'])
+    writer.writerows(books)
+
+with open('user.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['UserID', 'Name', 'Email', 'Password'])
+    writer.writerows(users)
+
+with open('loan.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['LoanID', 'UserID', 'BookID', 'LoanDate', 'DueDate', 'ReturnDate'])
+    writer.writerows(loans)
+
+with open('hold.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['HoldID', 'UserID', 'BookID', 'HoldDate', 'ExpiryDate'])
+    writer.writerows(holds)
