@@ -38,20 +38,20 @@ with open('library.csv', 'w', newline='') as file:
 
 with open('book.csv', 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['BookID', 'Title', 'Author', 'Quantity', 'Category'])
+    writer.writerow(['Book_ID', 'Title', 'Author', 'Quantity', 'Category'])
     writer.writerows(books)
 
 with open('user.csv', 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['UserID', 'Name', 'Email', 'Password'])
+    writer.writerow(['User_ID', 'Name', 'Email', 'Password'])
     writer.writerows(users)
 
 with open('loan.csv', 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['LoanID', 'UserID', 'BookID', 'LoanDate', 'DueDate', 'ReturnDate'])
+    writer.writerow(['Loan_ID', 'User_ID', 'Book_ID', 'Loan_Date', 'Due_Date', 'Return_Date'])
     writer.writerows(loans)
 
 with open('hold.csv', 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['HoldID', 'UserID', 'BookID', 'HoldDate', 'ExpiryDate'])
+    writer.writerow(['Hold_ID', 'User_ID', 'Book_ID', 'Hold_Date'])
     writer.writerows(holds)
