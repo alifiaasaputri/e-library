@@ -33,7 +33,7 @@ holds = [(i + 1, random.randint(1, 100), random.randint(1, 100), random_dates(ho
 # Write data to CSV files
 with open('library.csv', 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['LibraryID', 'Name', 'Location'])
+    writer.writerow(['Library_ID', 'Name', 'Location'])
     writer.writerows(libraries)
 
 with open('book.csv', 'w', newline='') as file:
